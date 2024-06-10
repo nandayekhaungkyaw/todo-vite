@@ -1,0 +1,9 @@
+export const inputTask = document.querySelector("#inputTask");
+export const inputBtn = document.querySelector(" #inputBtn");
+export const noList = document.querySelector(" #noList");
+export const listGroup = document.querySelector(" #listGroup");
+export const doneTasks = document.querySelector(" #doneTasks");
+export const totalTasks = document.querySelector(" #totalTasks");
+export const deletAll = document.querySelector("#delet-all");
+export const doneTaskAll = document.querySelector("#done-task-all");
+export const listTemplate = document.querySelector("#listTemplate");

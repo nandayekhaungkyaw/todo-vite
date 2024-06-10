@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+    <main class=" bg-stone-400 min-w-[400px] max-w-[500px] m-auto p-4 mt-6">
+        <header class=" w-full   text-3xl placeholder:">
+            <h1 class="font-serif animate__animated animate__zoomIn">List Builder</h1>
+
+        </header>
+        
+        <!-- first section  -->
+        <section class=" w-full flex flex-row mt-2 font-mono justify-between border border-stone-950 ">
+         
+                <input type="text" id="inputTask" class="flex-grow focus-visible:outline-none p-2 " >
+                <button  id="inputBtn" class="  border-2 border-stone-950 size-12 items-center justify-center flex bg-stone-950 text-white "> 
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                      
+                    </div>
+                </button>
+            
+           
+        </section>
+
+        <!-- second section  -->
+
+        <section class="flex flex-row justify-between justify-center  mt-3">
+            <p class=" font-mono ">Your List</p>
+
+            <div class="flex flex-row gap-1 bg-stone-600 rounded-md px-2 py-1">
+                <span>Done</span>
+                <div class="flex flex-row gap-1">
+                    ( <span id="doneTasks">0 </span> 
+                        <span>/</span>
+
+                        <span id="totalTasks">0</span>
+                        
+                        )
+
+                </div>
+            </div>
+        </section>
+       
+        <!-- third section  -->
+     <section class="" id="listGroup">
+
+               <!-- LIst items  -->
+
+
+            <!-- <div class="List">
+                <section class="  flex border border-stone-950 flex-row justify-between  mt-2 p-2">
+                    <div class="flex flex-row gap-2  items-center ">
+                        <input type="checkbox" class="size-6 ">
+                        <p id="taskList">My first LIst</p>
+                    </div>
+                    <div class="flex flex-row gap-2">
+                        <img class="w-8 border border-stone-900 p-1"  src="../img/pen-svgrepo-com.svg" alt="">
+                        <img  class="w-8 border border-stone-900 p-1" src="../img/delet-delete-cut-svgrepo-com.svg" alt="">
+                    </div>
+                </section>
+
+            </div> -->
+          
+       
+
+         <!-- no list section  -->
+
+         <section id="noList" class=" last:block hidden">
+
+          <div class="flex flex-col justify-center items-center">
+            <img src="../img/To do list-bro.svg" class="w-36 " alt="">
+            <p>There is  <b> no List</b></p>
+          </div>
+         </section>
+
+         </section>
+
+    </main>
+    <section class="m-auto w-1/3  flex justify-between items-center  mt-2">
+        <button id="delet-all" class="border border-solid px-4 py-1 bg-slate-500 text-white rounder-lg ">delet all</button>
+        <button id="done-task-all" class="border border-solid px-4 py-1 bg-slate-500 text-white rounder-lg ">done task all</button>
+
+     </section>
+
+     <template id="listTemplate">
+        <div class="List">
+             <section class=" animate__animated animate__zoomIn flex border border-stone-950 flex-row justify-between  mt-2 p-2">
+                <div class="flex flex-row gap-2 flex-grow items-center ">
+                    <input type="checkbox"  class="size-6 checked  " id="checked">
+                    <p id="taskList">${inputTask}</p>
+                </div>
+                <div class="flex flex-row gap-2">
+                <button id="editBtn" class=" editBtn border list-edit-btn border-stone-950 disabled:opacity-20 p-2" >   
+                
+                <svg  class="size-4 pointer-events-none" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.4001 18.1612L11.4001 18.1612L18.796 10.7653C17.7894 10.3464 16.5972 9.6582 15.4697 8.53068C14.342 7.40298 13.6537 6.21058 13.2348 5.2039L5.83882 12.5999L5.83879 12.5999C5.26166 13.1771 4.97307 13.4657 4.7249 13.7838C4.43213 14.1592 4.18114 14.5653 3.97634 14.995C3.80273 15.3593 3.67368 15.7465 3.41556 16.5208L2.05445 20.6042C1.92743 20.9852 2.0266 21.4053 2.31063 21.6894C2.59466 21.9734 3.01478 22.0726 3.39584 21.9456L7.47918 20.5844C8.25351 20.3263 8.6407 20.1973 9.00498 20.0237C9.43469 19.8189 9.84082 19.5679 10.2162 19.2751C10.5343 19.0269 10.823 18.7383 11.4001 18.1612Z" fill="#1C274C"/>
+                <path d="M20.8482 8.71306C22.3839 7.17735 22.3839 4.68748 20.8482 3.15178C19.3125 1.61607 16.8226 1.61607 15.2869 3.15178L14.3999 4.03882C14.4121 4.0755 14.4246 4.11268 14.4377 4.15035C14.7628 5.0875 15.3763 6.31601 16.5303 7.47002C17.6843 8.62403 18.9128 9.23749 19.85 9.56262C19.8875 9.57563 19.9245 9.58817 19.961 9.60026L20.8482 8.71306Z" fill="#1C274C"/>
+                </svg>
+                </button>
+                <button class="border list-del-btn border-stone-950 disabled:opacity-20 p-2" >   
+                
+                <svg class="size-4 pointer-events-none"  fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" data-name="Layer 2" id="Layer_2" xmlns="http://www.w3.org/2000/svg"><title/><path d="M10,11.06q6.36.19,12.71.26a1.25,1.25,0,0,0,0-2.5l-5.32-.08a4,4,0,0,1-.19-1,1.25,1.25,0,0,0-2.5,0,6.25,6.25,0,0,0,.1,1L10,8.56C8.39,8.51,8.39,11,10,11.06Z"/><path d="M23.4,13.21a1.24,1.24,0,0,0-1.2-.91q-5.94-.3-11.89-.25a1.18,1.18,0,0,0-1.18,1,1.25,1.25,0,0,0-.27,1.09A49.2,49.2,0,0,1,10,24.47a1.26,1.26,0,0,0,.92,1.21A52,52,0,0,0,22.65,26a1.29,1.29,0,0,0,1.25-1.25A58.26,58.26,0,0,0,23.4,13.21Zm-2,10.4a48.33,48.33,0,0,1-9-.25,54.22,54.22,0,0,0-1-8.8c3.2,0,6.41,0,9.61.2A54.52,54.52,0,0,1,21.44,23.61Z"/><path d="M16.3,17.26c.05-1.61-2.45-1.61-2.5,0a14.91,14.91,0,0,0,.3,3.33,1.25,1.25,0,0,0,2.41-.66A11.42,11.42,0,0,1,16.3,17.26Z"/><path d="M20,17a1.25,1.25,0,0,0-2.5,0,21.24,21.24,0,0,0,.41,3.64,1.26,1.26,0,0,0,1.54.87,1.28,1.28,0,0,0,.87-1.54A16.46,16.46,0,0,1,20,17Z"/></svg>
+            
+                </button>
+                </div>
+            </section>;
+        </div>
+     </template>
+
+
+</body>
+<script type="module" src="./main.js"></script>
+</html>
