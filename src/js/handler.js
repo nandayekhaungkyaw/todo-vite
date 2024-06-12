@@ -1,15 +1,19 @@
 import { calculateList, checkList, listEdit, listRemove, taskAdd } from "./list.js";
-import { inputTask } from "./selector.js";
+import { inputTask, listGroup } from "./selector.js";
 
 export const listGroupControl = (event) => {
     const List = event.target.closest(".List");
+   
+    
   
     if (event.target.classList.contains("editBtn")) {
       listEdit(List.id);
+      
     }
     if (event.target.classList.contains("list-del-btn")) {
       if (window.confirm("Are you sure to delet")) {
-        listRemove(List.id);
+        listRemove(List.id)
+        
   
         calculateList();
       }
@@ -38,9 +42,12 @@ export const listGroupControl = (event) => {
   };
   export const deletAllHandler = () => {
     if (confirm("are you sure to delet")) {
+      
       const lists = listGroup.querySelectorAll(".List");
+      
   
       lists.forEach((list) => {
+        
         listRemove(list.id);
         // list.remove()
       });

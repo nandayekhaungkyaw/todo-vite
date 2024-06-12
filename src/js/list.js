@@ -32,7 +32,8 @@ export const calculateList = () => {
   };
 
   export const listRemove = (comeList) => {
-    const currentList = document.querySelector(`#${comeList}`);
+    const currentList = listGroup.querySelector(`#${comeList}`);
+    console.log(currentList);
     currentList.className = "animate__animated animate__hinge";
     currentList.addEventListener("animationend", () => {
       currentList.remove();
