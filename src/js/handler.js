@@ -71,7 +71,7 @@ export const listGroupControl = (event) => {
         taskAdd(inputTask.value);
       } else {
         Swal.fire({
-          width:"50%",
+          width:"60%",
           title: "The input Text?",
          
           icon: "info"
@@ -86,7 +86,7 @@ export const listGroupControl = (event) => {
     } else {
 
       Swal.fire({
-        width:"30%",
+        width:"60%",
         title: "The input Text?",
         
         icon: "info"
@@ -95,17 +95,31 @@ export const listGroupControl = (event) => {
     }
   };
   export const deletAllHandler = () => {
-    if (confirm("are you sure to delet")) {
-      
-      const lists = listGroup.querySelectorAll(".List");
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+       
+        const lists = listGroup.querySelectorAll(".List");
       
   
-      lists.forEach((list) => {
-        
-        listRemove(list.id);
-        // list.remove()
-      });
-    }
+        lists.forEach((list) => {
+          
+          listRemove(list.id);
+          // list.remove()
+        });
+      }
+    });
+
+ 
+    
   };
   export const doneTaskAllHandler = () => {
     const lists = listGroup.querySelectorAll(".List");
