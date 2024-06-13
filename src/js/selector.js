@@ -7,3 +7,4 @@ export const totalTasks = document.querySelector(" #totalTasks");
 export const deletAll = document.querySelector("#delet-all");
 export const doneTaskAll = document.querySelector("#done-task-all");
 export const listTemplate = document.querySelector("#listTemplate");
+export const congratulation=document.querySelector("#congratulation")

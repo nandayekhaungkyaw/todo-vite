@@ -1,3 +1,4 @@
+import { congrat } from "./handler.js";
 import {  listGroup, listTemplate } from "./selector.js";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -52,6 +53,7 @@ export const calculateList = () => {
     currentList.classList.toggle("opacity-50");
   
     editBtn.toggleAttribute("disabled");
+    congrat()
   };
   
  export  const listEdit = (comeList) => {
@@ -64,7 +66,7 @@ export const calculateList = () => {
     const newInput = document.createElement("input");
     newInput.setAttribute("autofocus", true);
     newInput.className =
-      " border  focus:cursor-auto  w-52 border-stone-950 w-[300px] focus-visible:outline-none font-mon px-2 py-1 ";
+      " border  focus:cursor-auto   border-stone-950 max-w[300px] w-3/4 focus-visible:outline-none font-mon px-2 py-1 ";
     editBtn.setAttribute("disabled", true);
     taskList.after(newInput);
     taskList.className = "hidden";

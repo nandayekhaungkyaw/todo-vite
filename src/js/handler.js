@@ -1,5 +1,7 @@
+
+import Swal from "sweetalert2";
 import { calculateList, checkList, listEdit, listRemove, taskAdd } from "./list.js";
-import { inputTask, listGroup } from "./selector.js";
+import { congratulation, inputTask, listGroup, totalTasks } from "./selector.js";
 
 export const listGroupControl = (event) => {
     const List = event.target.closest(".List");
@@ -11,12 +13,52 @@ export const listGroupControl = (event) => {
       
     }
     if (event.target.classList.contains("list-del-btn")) {
-      if (window.confirm("Are you sure to delet")) {
-        listRemove(List.id)
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         
+          listRemove(List.id)
+      
+          calculateList();;
+        }else{
+          Swal.fire({
+            title: "Are you sure to cancle it",
+          
+            
+              
+             border:"rounded",
+              width: '50%', // Set the width here
+              background:"#ffff",
+              color:"#aaaa",
+
+              padding: '1rem',
+              backdrop: true, // Optional: add a backdrop
         
-  
-        calculateList();
-      }
+          
+            
+          hideClass: {
+            popup: `
+              animate__animated
+             animate__fadeOutRightBig
+              animation-duration: 4s;
+            `
+          }
+          });
+          
+          
+          
+        }
+      });
+
+    
+     
     }
     if (event.target.classList.contains("checked")) {
       checkList(List.id);
@@ -28,16 +70,28 @@ export const listGroupControl = (event) => {
       if (inputTask.value.trim()) {
         taskAdd(inputTask.value);
       } else {
-        alert("don't take ender");
+        Swal.fire({
+          width:"50%",
+          title: "The input Text?",
+         
+          icon: "info"
+        });
       }
-    } else {
-    }
+    } 
+    
   };
   export const taskAddHandler = () => {
     if (inputTask.value.trim()) {
       taskAdd(inputTask.value);
     } else {
-      alert("u must input task");
+
+      Swal.fire({
+        width:"30%",
+        title: "The input Text?",
+        
+        icon: "info"
+      });
+      
     }
   };
   export const deletAllHandler = () => {
@@ -63,8 +117,13 @@ export const listGroupControl = (event) => {
         list.querySelector("#checked").checked = true;
       }
       // list.querySelector("#checked").checked=true
+     
+        
       checkList(list.id);
+     
     });
+    
+
   };
 const fruits=["apple","orange"]
   export const initialRender=()=>{
@@ -74,4 +133,23 @@ const fruits=["apple","orange"]
     })
 
   }
+
+export const congrat=()=>{
+  const Lists =listGroup.querySelectorAll(".List input:checked")
+  console.log(Lists.length);
+  console.log(totalTasks.innerHTML);
+  
+  if(Lists.length==totalTasks.innerHTML){
+    congratulation.classList.remove("hidden")
+    congratulation.classList.add("block")
+    console.log("done");
+
+  }else{
+    congratulation.classList.remove("block")
+    congratulation.classList.add("hidden")
+
+  }
+  
+  
+}
   

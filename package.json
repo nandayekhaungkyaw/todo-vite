@@ -17,6 +17,7 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "sever": "^0.0.2",
+    "sweetalert2": "^11.11.1",
     "uuid": "^10.0.0"
   }
 }
