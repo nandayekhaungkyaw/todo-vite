@@ -6,7 +6,7 @@ const CallBackObserver=()=>{
     
 
     const doObserver=()=>{
-        console.log("you chang in listGroup");
+       
         doneCheck()
         calculateList();
 
